@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="file.css">
+</head>
+<body style="background-color:powderblue;">
+    <!-- Navbar with logo -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="50" height="50" class="d-inline-block align-top">
+                Group: Marie and Mohamed
+            </a>
+            <div class="subnav-content">
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+                <a href="/profile">Profile</a>
+        </div>
+
+    </nav>
+    <style>
+        div.subnav-content{
+        position: absolute;
+        right: 10px;
+    }
+    img{
+
+    }
+    </style>
+    <div class="container">
+        <h1 class="mt-5">List of Recipes</h1>
+        <ul class="list-group mt-3">
+            {% for recipe in recipes %}
+                <li class="list-group-item">
+                    <h3>{{ recipe.recipe_name }}</h3>
+                    <p><strong>Ingredients:</strong> {{ recipe.ingredient }}</p>
+                    <p><strong>Steps:</strong> {{ recipe.steps }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('add_recipe') }}" class="btn btn-primary mt-3">Add New Recipe</a>
+    </div>
+    <footer>
+</body>
+</html>
